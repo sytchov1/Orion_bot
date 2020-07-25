@@ -22,10 +22,10 @@ async def on_ready():
 
 
 @bot.command(name='sendAll', help='Рассылает введённое сообщение всем членам гильдии')
-@commands.has_role('Администратор')
+@commands.has_role('Админ')
 async def sendAll(ctx, *, message):
-    guild = bot.get_guild(733311628208242858)
-    role = guild.get_role(733320565879996467)
+    guild = bot.get_guild(701839838160355348)
+    role = guild.get_role(701928368865804318)
     getters = role.members
     for member in getters:
         await member.send(message)
@@ -34,13 +34,13 @@ async def sendAll(ctx, *, message):
 @sendAll.error
 async def sendAll_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.channel.send('Где сообщение, Тварына?')
+        await ctx.channel.send('Где сообщение, Митруд?')
     elif isinstance(error, commands.MissingRole):
         await ctx.channel.send('Недостаточно прав, Перчик')
 
 
 @bot.command(name='roll', help='Аналог /roll из игры с диапазоном значений от 1 до 100')
-@commands.has_role('орионовец')
+@commands.has_role('Участник гильдии')
 async def roll(ctx):
     embed = discord.Embed(
         color=discord.Color.teal(),
@@ -50,7 +50,7 @@ async def roll(ctx):
 
 
 @bot.command(name='dps', help='/roll на ДПС от 1 до 2000')
-@commands.has_role('орионовец')
+@commands.has_role('Участник гильдии')
 async def dps(ctx):
     dps = random.randint(1, 2000)
     reaction = ''
@@ -82,7 +82,7 @@ async def dps(ctx):
 
 
 @bot.command(name='help', help='Выводит список доступных команд с пояснениями')
-@commands.has_role('орионовец')
+@commands.has_role('Участник гильдии')
 async def help(ctx):
     embed = discord.Embed(
         color=discord.Color.blue(),
