@@ -64,13 +64,13 @@ async def dps(ctx):
         reaction = "А вот это уже статья... <:pepeSSS:735063236558192721>"
     elif dps == 2000:
         reaction = "Адский разгон! Нам п#зда! <:Jerry:734847322810220664>"
-    elif dps < 201:
+    elif dps < 351:
         reaction = listOfReactions[0][random.randint(0, 6)]
-    elif dps < 501:
+    elif dps < 701:
         reaction = listOfReactions[1][random.randint(0, 6)]
-    elif dps < 801:
+    elif dps < 1101:
         reaction = listOfReactions[2][random.randint(0, 5)]
-    elif dps < 1201:
+    elif dps < 1601:
         reaction = listOfReactions[3][random.randint(0, 5)]
     elif dps < 2000:
         reaction = listOfReactions[4][random.randint(0, 5)]
