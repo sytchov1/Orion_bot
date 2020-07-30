@@ -82,7 +82,7 @@ async def dps(ctx):
 
 
 @bot.command(name='clear', help='удаляет все сообщения до стоп-символа (включительно). За раз можно удалить не более 50 сообщений')
-@commands.has_role('Администратор')
+@commands.has_role('Админ')
 async def clear(ctx):
     stopReaction = '🛑'
     deletingMessages = []
@@ -90,7 +90,7 @@ async def clear(ctx):
         for reaction in message.reactions:
             if reaction.emoji == stopReaction:
                 async for user in reaction.users():
-                    if user.top_role.name == 'Администратор':
+                    if user.top_role.name == 'Админ':
                         deletingMessages.append(message)
                         await ctx.channel.delete_messages(deletingMessages)
                         return
