@@ -81,6 +81,22 @@ async def dps(ctx):
     await ctx.channel.send(embed=embed)
 
 
+@bot.command(name='clear', help='удаляет все сообщения до стоп-символа (включительно). За раз можно удалить не более 50 сообщений')
+@commands.has_role('Администратор')
+async def clear(ctx):
+    stopReaction = '🛑'
+    deletingMessages = []
+    async for message in ctx.channel.history(limit=50):
+        for reaction in message.reactions:
+            if reaction.emoji == stopReaction:
+                async for user in reaction.users():
+                    if user.top_role.name == 'Администратор':
+                        deletingMessages.append(message)
+                        await ctx.channel.delete_messages(deletingMessages)
+                        return
+        deletingMessages.append(message)
+
+
 @bot.command(name='help', help='Выводит список доступных команд с пояснениями')
 @commands.has_role('Участник гильдии')
 async def help(ctx):
